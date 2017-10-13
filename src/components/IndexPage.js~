@@ -1,0 +1,50 @@
+import React from 'react';
+import MoviePreview from './MoviePreview';
+import $ from 'jquery';
+
+export default class IndexPage extends React.Component {
+  constructor(props) {
+	  super(props);
+ this.state = {
+    movies: []
+  };
+	  console.log('didmount');
+    $.ajax({
+      url: 'http://113.161.98.44:3300/movie/index',
+      dataType: 'json',
+      success: function(data) {
+	for(var i = 0;i<data.length;i++){
+		
+	}
+        this.setState({movies: data});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this)
+    });
+	}
+  componentWillMount() {
+	
+  }
+  render() {
+	console.log('payet');
+    return (
+	<div className="wrapper-container">		
+		<div className="movie-grid recommended">
+			<div className="movie-grid-header">
+				<div className="movie-grid-title">Recommended</div>
+				<div className="movie-grid-tool">
+					<Link to={`/`}>View All</Link>
+				</div>
+			</div>
+			<div className="movie-grid-body">
+				<ul>{this.state.movies.map(movieData => <MoviePreview key={movieData.id} {...movieData} />)}</ul>
+			</div>
+		</div>
+		<div className="movie-grid newest"></div>
+		<div className="movie-grid recommended"></div>
+		<div className="movie-grid mostwatched"></div>
+	</div>
+    );
+  }
+}

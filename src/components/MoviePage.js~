@@ -1,0 +1,14 @@
+import React from 'react';
+import { Link } from 'react-router';
+import NotFoundPage from './NotFoundPage';
+
+
+
+
+export default class MoviePage extends React.Component {
+  render() {
+    return (
+	
+    );
+  }
+}

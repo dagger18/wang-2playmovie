@@ -1,0 +1,38 @@
+import React from 'react';
+import { Link } from 'react-router';
+
+export default class Layout extends React.Component {
+  render() {
+    return (
+ 	<div id="main">
+		<div className="header">
+			<div className="wrapper-container">
+				<div className="site-banner"></div>
+			</div>
+		</div>
+		<div className="menu-and-search">
+			<div className="wrapper-container">
+				<div className="alt-logo"><i className="ts_icon ts_icon_paper_plane"></i>moviedeer.com</div>
+				<div className="site-menu">
+					<ul>
+						<li><a><i className="ts_icon ts_icon_grabby_patty"></i></a></li>
+						<li><a>Genre</a></li>
+						<li><a>Country</a></li>
+						<li><a>Newest</a></li>
+						<li><a>Most Watched</a></li>
+					</ul>
+				</div>
+				<div className="movie-search">
+					<i className="ts_icon ts_icon_search"></i>
+					<input type="text" placeholder="Search movie here ..." />
+				</div>
+			</div>
+		</div>
+		<div className="main-content">
+			{this.props.children}
+		</div>
+	</div>
+      
+    );
+  }
+}
